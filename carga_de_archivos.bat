@@ -1,0 +1,7 @@
+(clear)
+(load "C:/Users/Franco/Desktop/SBC-asesoramiento-laptop/templates/Laptop.clp")
+(load "C:/Users/Franco/Desktop/SBC-asesoramiento-laptop/src/rules.clp")
+(load "C:/Users/Franco/Desktop/SBC-asesoramiento-laptop/src/response.clp")
+(load "C:/Users/Franco/Desktop/SBC-asesoramiento-laptop/src/main.clp")
+(reset)
+(run)

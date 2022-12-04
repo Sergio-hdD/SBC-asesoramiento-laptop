@@ -1,3 +1,11 @@
+(defrule open-valves
+   (valves-open-through ?v)
+   =>
+   (while (> ?v 0)
+      (printout t "Valve " ?v " is open" crlf)
+      (bind ?v (- ?v 1)))
+) 
+
 (defrule definir_laptop ""
         =>
         ;Elección de uso
@@ -5,13 +13,13 @@
         (printout t "   1 - Crear/Diseñar " crlf)
         (printout t "   2 - Juegos " crlf)
         (printout t "   3 - Trabajo/Escuela " crlf)
-        (printout t "   4 - Lo básico " crlf)
+        (printout t "   4 - Básico " crlf)
         (bind ?UsoLaptop (read))
 
         (if (= ?UsoLaptop 1) then (bind ?UsoEnLetras "Crear/Diseñar") )
         (if (= ?UsoLaptop 2) then (bind ?UsoEnLetras "Juegos") )
         (if (= ?UsoLaptop 3) then (bind ?UsoEnLetras "Trabajo/Escuela") )
-        (if (= ?UsoLaptop 4) then (bind ?UsoEnLetras "Lo básico") )
+        (if (= ?UsoLaptop 4) then (bind ?UsoEnLetras "Básico") )
 
         (assert (Laptop (Uso ?UsoEnLetras)))
 
@@ -28,16 +36,16 @@
 
         (assert (Laptop (Tamanio ?TamanioEnLetras)))
 
-        (if (= ?UsoLaptop 4) then ;Si va por el uso "Lo básico" solo tendrá 2 elecciones
+        (if (= ?UsoLaptop 4) then ;Si va por el uso "Básico" solo tendrá 2 elecciones
                 ;Mensaje/s de lo que ha elegido
                 (printout t "   Sus elecciones fueron " crlf)
                 (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
                 (printout t "           Ha elegido tamaño:") (printout t ?TamanioEnLetras crlf)
         )
 
-        (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Lo básico"
-                (printout t " TODO: contemplar tamanio para uso != Lo básico " crlf)
-                (printout t " TODO: seleccionar costo y bateria para uso != Lo básico " crlf)
+        (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Básico"
+                (printout t " TODO: contemplar tamanio para uso != Básico " crlf)
+                (printout t " TODO: seleccionar costo y bateria para uso != Básico " crlf)
         )
 
 )
