@@ -8,9 +8,9 @@
                 (bind ?UsoLaptop (read))
                 (printout t "Ingresaste:") (printout t ?UsoLaptop crlf)
 
-        (if (= ?UsoLaptop 1) then (assert (UsoLaptop (Nombre "Crear/Diseñar"))))
-        (if (= ?UsoLaptop 2) then (assert (UsoLaptop (Nombre "Juegos"))))
-        (if (= ?UsoLaptop 3) then (assert (UsoLaptop (Nombre "Trabajo/Escuela"))))
-        (if (= ?UsoLaptop 4) then (assert (UsoLaptop (Nombre "Básico"))))
+        (if (= ?UsoLaptop 1) then (assert (Laptop (Uso "Crear/Diseñar"))))
+        (if (= ?UsoLaptop 2) then (assert (Laptop (Uso "Juegos"))))
+        (if (= ?UsoLaptop 3) then (assert (Laptop (Uso "Trabajo/Escuela"))))
+        (if (= ?UsoLaptop 4) then (assert (Laptop (Uso "Básico"))))
         
 )

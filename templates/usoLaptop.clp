@@ -1,2 +1,0 @@
-(deftemplate UsoLaptop
-	(field Nombre))
