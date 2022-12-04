@@ -1,5 +1,5 @@
 (defrule Microsoft_Surface_Go_3_ ""
     (exists (Laptop (Uso "Crear/Diseñar")))
     =>
-    (assert (Laptop (Marca "Microsoft") (Modelo "Surface Go 3")))
+    (assert (Laptop (Nombre "Microsoft Surface Go 3")))
 )

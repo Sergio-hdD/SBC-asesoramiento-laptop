@@ -1,5 +1,4 @@
 (deftemplate Laptop
-    (field Marca)
-	(field Modelo)
+    (field Nombre)
 	(field Uso)
     )
