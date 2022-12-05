@@ -21,8 +21,6 @@
         (if (= ?UsoLaptop 3) then (bind ?UsoEnLetras "Trabajo/Escuela") )
         (if (= ?UsoLaptop 4) then (bind ?UsoEnLetras "Básico") )
 
-        (assert (Laptop (Uso ?UsoEnLetras)))
-
         ;Elección de tamaño de pantalla
         (printout t "Seleccione el tamaño de pantalla que desea:" crlf) 
         (printout t "   1 - Pequeño " crlf)
@@ -34,9 +32,8 @@
         (if (= ?TamanioLaptop 2) then (bind ?TamanioEnLetras "Mediano") )
         (if (= ?TamanioLaptop 3) then (bind ?TamanioEnLetras "Grande") )
 
-        (assert (Laptop (Tamanio ?TamanioEnLetras)))
-
         (if (= ?UsoLaptop 4) then ;Si va por el uso "Básico" solo tendrá 2 elecciones
+                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
                 ;Mensaje/s de lo que ha elegido
                 (printout t "   Sus elecciones fueron " crlf)
                 (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
@@ -44,6 +41,7 @@
         )
 
         (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Básico"
+                (assert (Laptop (Uso ?UsoEnLetras)))
                 (printout t " TODO: contemplar tamanio para uso != Básico " crlf)
                 (printout t " TODO: seleccionar costo y bateria para uso != Básico " crlf)
         )
