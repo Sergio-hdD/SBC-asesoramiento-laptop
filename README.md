@@ -14,6 +14,10 @@ Cargar templates
 Cargar reglas 
 ```
 
+``` 
+Opción alternativa (No cargar los archivos manulamente) - Ejecutar el archivo setup.bat 
+```
+
 ### Correr el programa 
 
 ```
