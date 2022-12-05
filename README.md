@@ -17,7 +17,7 @@ Cargar reglas
 ``` 
 Opción alternativa (No cargar los archivos manualmente) - Cambiar el path y ejecutar el archivo setup.bat 
 ```
-
+***
 ``` 
 Cargar main.clp 
 ```
