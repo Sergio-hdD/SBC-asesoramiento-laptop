@@ -23,7 +23,7 @@
 
         ;Elección de tamaño de pantalla
         (printout t "Seleccione el tamaño de pantalla que desea:" crlf) 
-        (printout t "   1 - Pequeño " crlf)
+        (if (!= ?UsoLaptop 2) then (printout t "   1 - Pequeño " crlf)) 
         (printout t "   2 - Mediano " crlf)
         (printout t "   3 - Grande " crlf)
         (bind ?TamanioLaptop (read))
@@ -41,9 +41,32 @@
         )
 
         (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Básico"
-                (assert (Laptop (Uso ?UsoEnLetras)))
-                (printout t " TODO: contemplar tamanio para uso != Básico " crlf)
-                (printout t " TODO: seleccionar costo y bateria para uso != Básico " crlf)
+                ;Elección de costo
+                (printout t "Seleccione el presupuesto con el que cuenta:" crlf) 
+                (printout t "   1 - $300.000 o menos " crlf)
+                (printout t "   2 - Más de $300.000 " crlf)
+                (bind ?CostoLaptop (read))
+
+                (if (= ?CostoLaptop 1) then (bind ?CostoEnLetras "$300.000 o menos") )
+                (if (= ?CostoLaptop 2) then (bind ?CostoEnLetras "Más de $300.000") )
+
+                ;Elección de bateria
+                (printout t "Seleccione la duracion de bateria que desea:" crlf) 
+                (printout t "   1 - 10hs o menos " crlf)
+                (printout t "   2 - Más de 10hs " crlf)
+                (bind ?BateriaLaptop (read))
+
+                (if (= ?BateriaLaptop 1) then (bind ?BateriaEnLetras "10hs o menos") )
+                (if (= ?BateriaLaptop 2) then (bind ?BateriaEnLetras "Más de 10hs") )
+
+                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) (Bateria ?BateriaEnLetras) ))
+                ;Mensaje/s de lo que ha elegido
+                (printout t "   Sus elecciones fueron " crlf)
+                (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
+                (printout t "           Ha elegido tamaño:") (printout t ?TamanioEnLetras crlf)
+                (printout t "           Ha elegido costo:") (printout t ?CostoEnLetras crlf)
+                (printout t "           Ha elegido duración de bateria:") (printout t ?BateriaEnLetras crlf)
+
         )
 
 )
