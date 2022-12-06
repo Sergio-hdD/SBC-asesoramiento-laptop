@@ -11,6 +11,7 @@
 
         (bind ?CostoEnLetras " ")
         (bind ?BateriaEnLetras " ")
+        (bind ?Termina 0)
 
         ;#################################################################################################################
         ;Elección de uso
@@ -45,13 +46,14 @@
         )
 
         ;#################################################################################################################
-        (if (= ?UsoLaptop 4) then 
-        ;Si va por el uso "Básico" solo tendrá 2 elecciones
+        (if ( or (= ?UsoLaptop 4) (and (= ?UsoLaptop 3) (= ?TamanioLaptop 1) ) ) then 
+        ;Si el uso es "Básico", o si el uso es "TrabajoEscuela" y tamaño "Pequeño", solo tendrá 2 elecciones
                 (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
+                (bind ?Termina 1)
         )
 
 
-        (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Básico"
+        (if (= ?Termina 0) then ;Si se puede elegir costo y duración de batería
                 ;Elección de costo
                 (printout t "Seleccione el presupuesto con el que cuenta:" crlf) 
                 (printout t "   1 - $300.000 o menos " crlf)
