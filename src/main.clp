@@ -1,13 +1,18 @@
-(defrule open-valves
-   (valves-open-through ?v)
-   =>
-   (while (> ?v 0)
-      (printout t "Valve " ?v " is open" crlf)
-      (bind ?v (- ?v 1)))
-) 
+;(defrule open-valves
+;   (valves-open-through ?v)
+;   =>
+;   (while (> ?v 0)
+;      (printout t "Valve " ?v " is open" crlf)
+;      (bind ?v (- ?v 1)))
+;) 
 
 (defrule definir_laptop ""
         =>
+
+        (bind ?CostoEnLetras " ")
+        (bind ?BateriaEnLetras " ")
+
+        ;#################################################################################################################
         ;Elección de uso
         (printout t "Seleccione el uso de que le va dar a la laptop:" crlf) 
         (printout t "   1 - Crear/Diseñar " crlf)
@@ -16,29 +21,35 @@
         (printout t "   4 - Básico " crlf)
         (bind ?UsoLaptop (read))
 
-        (if (= ?UsoLaptop 1) then (bind ?UsoEnLetras "Crear/Diseñar") )
-        (if (= ?UsoLaptop 2) then (bind ?UsoEnLetras "Juegos") )
-        (if (= ?UsoLaptop 3) then (bind ?UsoEnLetras "Trabajo/Escuela") )
-        (if (= ?UsoLaptop 4) then (bind ?UsoEnLetras "Básico") )
+        (switch ?UsoLaptop
+                (case 1 then (bind ?UsoEnLetras "Crear/Diseñar"))
+                (case 2 then (bind ?UsoEnLetras "Juegos"))
+                (case 3 then (bind ?UsoEnLetras "Trabajo/Escuela"))
+                (case 4 then (bind ?UsoEnLetras "Básico"))
+                ;(default (bind ?UsoEnLetras 0))
+        )
 
+        ;#################################################################################################################
         ;Elección de tamaño de pantalla
         (printout t "Seleccione el tamaño de pantalla que desea:" crlf) 
-        (if (!= ?UsoLaptop 2) then (printout t "   1 - Pequeño " crlf)) 
+        (if (!= ?UsoLaptop 2) then (printout t "   1 - Pequeño " crlf))  ;No hay laptops con pantalla pequeña para juegos
         (printout t "   2 - Mediano " crlf)
         (printout t "   3 - Grande " crlf)
         (bind ?TamanioLaptop (read))
 
-        (if (= ?TamanioLaptop 1) then (bind ?TamanioEnLetras "Pequeño") )
-        (if (= ?TamanioLaptop 2) then (bind ?TamanioEnLetras "Mediano") )
-        (if (= ?TamanioLaptop 3) then (bind ?TamanioEnLetras "Grande") )
-
-        (if (= ?UsoLaptop 4) then ;Si va por el uso "Básico" solo tendrá 2 elecciones
-                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
-                ;Mensaje/s de lo que ha elegido
-                (printout t "   Sus elecciones fueron " crlf)
-                (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
-                (printout t "           Ha elegido tamaño:") (printout t ?TamanioEnLetras crlf)
+        (switch ?TamanioLaptop
+                (case 1 then (bind ?TamanioEnLetras "Pequeño"))
+                (case 2 then (bind ?TamanioEnLetras "Mediano"))
+                (case 3 then (bind ?TamanioEnLetras "Grande"))
+                ;(default (bind ?TamanioEnLetras 0))
         )
+
+        ;#################################################################################################################
+        (if (= ?UsoLaptop 4) then 
+        ;Si va por el uso "Básico" solo tendrá 2 elecciones
+                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
+        )
+
 
         (if (!= ?UsoLaptop 4) then ;Si NO va por el uso "Básico"
                 ;Elección de costo
@@ -51,22 +62,32 @@
                 (if (= ?CostoLaptop 2) then (bind ?CostoEnLetras "Más de $300.000") )
 
                 ;Elección de bateria
-                (printout t "Seleccione la duracion de bateria que desea:" crlf) 
-                (printout t "   1 - 10hs o menos " crlf)
-                (printout t "   2 - Más de 10hs " crlf)
-                (bind ?BateriaLaptop (read))
+                (if (!= ?UsoLaptop 3) then ;Si el uso NO es "Trabajo/Escuela"
+                        (printout t "Seleccione la duracion de bateria que desea:" crlf) 
+                        (printout t "   1 - 10hs o menos " crlf)
+                        (printout t "   2 - Más de 10hs " crlf)
+                        (bind ?BateriaLaptop (read))
 
-                (if (= ?BateriaLaptop 1) then (bind ?BateriaEnLetras "10hs o menos") )
-                (if (= ?BateriaLaptop 2) then (bind ?BateriaEnLetras "Más de 10hs") )
+                        (if (= ?BateriaLaptop 1) then (bind ?BateriaEnLetras "10hs o menos") )
+                        (if (= ?BateriaLaptop 2) then (bind ?BateriaEnLetras "Más de 10hs") )
 
-                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) (Bateria ?BateriaEnLetras) ))
-                ;Mensaje/s de lo que ha elegido
-                (printout t "   Sus elecciones fueron " crlf)
-                (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
-                (printout t "           Ha elegido tamaño:") (printout t ?TamanioEnLetras crlf)
-                (printout t "           Ha elegido costo:") (printout t ?CostoEnLetras crlf)
-                (printout t "           Ha elegido duración de bateria:") (printout t ?BateriaEnLetras crlf)
+                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) (Bateria ?BateriaEnLetras) ))
+                )
 
+                (if (= ?UsoLaptop 3) then ;Si el uso SI es "Trabajo/Escuela"
+                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) ))
+                )
         )
 
+        ;#################################################################################################################
+        ;Mensaje/s de lo que ha elegido
+        (printout t "   Sus elecciones fueron " crlf)
+        (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
+        (printout t "           Ha elegido tamaño:") (printout t ?TamanioEnLetras crlf)
+        (if (not (eq ?CostoEnLetras " "))  then 
+                (printout t "           Ha elegido costo:") (printout t ?CostoEnLetras crlf)
+        )
+        (if (not (eq ?BateriaEnLetras " ")) then
+                (printout t "           Ha elegido duración de bateria:") (printout t ?BateriaEnLetras crlf)
+        )
 )

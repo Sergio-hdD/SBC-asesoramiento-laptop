@@ -1,3 +1,5 @@
+;Todas las notebooks para Básico no es posible elegir costo ni la duración de la bateria 
+
 (defrule Lenovo_IdealPad_Duet_3i_ ""
     (and
         (Laptop (Uso "Básico"))
