@@ -13,8 +13,8 @@
     (and
         (Laptop (Uso "Crear/Diseñar"))
         (Laptop (Tamanio "Mediano"))
-        (Laptop (Costo "Más de $300.000"))
-        (Laptop (Bateria "Más de 10hs"))
+        ;(Laptop (Costo "Más de $300.000"))
+        ;(Laptop (Bateria "Más de 10hs"))
     )
     =>
     (printout t "La laptop sugerida es: Microsoft Surface Laptop Studio" crlf)
