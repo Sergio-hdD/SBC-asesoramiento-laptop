@@ -52,6 +52,11 @@
                 (bind ?Termina 1)
         )
 
+        (if ( and (= ?UsoLaptop 1) (= ?TamanioLaptop 1)) then 
+        ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Pequeño", solo existe un modelo de laptop.
+                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
+                (bind ?Termina 1)
+        )
 
         (if (= ?Termina 0) then ;Si se puede elegir costo y duración de batería
                 ;Elección de costo

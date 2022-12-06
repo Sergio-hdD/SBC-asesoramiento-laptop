@@ -2,8 +2,8 @@
     (and
         (Laptop (Uso "Crear/Diseñar"))
         (Laptop (Tamanio "Pequeño"))
-        (Laptop (Costo "$300.000 o menos"))
-        (Laptop (Bateria "10hs o menos"))
+        ;(Laptop (Costo "$300.000 o menos"))
+        ;(Laptop (Bateria "10hs o menos"))
     )
     =>
     (printout t "La laptop sugerida es: Microsoft Surface Go 3" crlf)
