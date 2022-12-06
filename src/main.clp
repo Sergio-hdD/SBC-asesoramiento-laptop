@@ -3,18 +3,20 @@
         (printout t "   1 - Crear/Diseñar " crlf)
         (printout t "   2 - Juegos " crlf)
         (printout t "   3 - Trabajo/Escuela " crlf)
-        (printout t "   4 - Básico " regla_de_dos_campos crlf)
+        (printout t "   4 - Básico " crlf)
         (bind ?UsoLaptop 0)
-        (while (and (neq ?UsoLaptop 1) (neq ?UsoLaptop 2) (neq ?UsoLaptop 3) (neq ?UsoLaptop 4))
+        
+        (while (= ?UsoLaptop 0)
                 (bind ?UsoLaptop (read))
                 (switch ?UsoLaptop
                         (case 1 then (bind ?UsoEnLetras "Crear/Diseñar"))
                         (case 2 then (bind ?UsoEnLetras "Juegos"))
                         (case 3 then (bind ?UsoEnLetras "Trabajo/Escuela"))
                         (case 4 then (bind ?UsoEnLetras "Básico"))
-                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf))
+                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?UsoLaptop 0))
                 )
         )
+
         (return ?UsoEnLetras)
 )
 
@@ -24,15 +26,28 @@
         (printout t "   2 - Mediano " crlf)
         (printout t "   3 - Grande " crlf)
         (bind ?TamanioLaptop 0)
-        (while (and (neq ?TamanioLaptop 1) (neq ?TamanioLaptop 2) (neq ?TamanioLaptop 3) (neq ?TamanioLaptop 4))
+       
+        (while (= ?TamanioLaptop 0)
                 (bind ?TamanioLaptop (read))
-                (switch ?TamanioLaptop
-                        (case 1 then (bind ?TamanioEnLetras "Pequeño"))
-                        (case 2 then (bind ?TamanioEnLetras "Mediano"))
-                        (case 3 then (bind ?TamanioEnLetras "Grande"))
-                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf))
+
+                (if (not (eq ?UsoEnLetras "Juegos") ) then
+                        (switch ?TamanioLaptop
+                                (case 1 then (bind ?TamanioEnLetras "Pequeño"))
+                                (case 2 then (bind ?TamanioEnLetras "Mediano"))
+                                (case 3 then (bind ?TamanioEnLetras "Grande"))
+                                (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?TamanioLaptop 0))
+                        )
+                )
+
+                (if (eq ?UsoEnLetras "Juegos") then
+                        (switch ?TamanioLaptop
+                                (case 2 then (bind ?TamanioEnLetras "Mediano"))
+                                (case 3 then (bind ?TamanioEnLetras "Grande"))
+                                (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?TamanioLaptop 0))
+                        )
                 )
         )
+
         (return ?TamanioEnLetras)
 )
 
@@ -41,14 +56,16 @@
         (printout t "   1 - $300.000 o menos " crlf)
         (printout t "   2 - Más de $300.000 " crlf)
         (bind ?CostoLaptop 0)
-        (while (and (neq ?CostoLaptop 1) (neq ?CostoLaptop 2))
+
+        (while (= ?CostoLaptop 0)
                 (bind ?CostoLaptop (read))
                 (switch ?CostoLaptop
                         (case 1 then (bind ?CostoEnLetras "$300.000 o menos"))
                         (case 2 then (bind ?CostoEnLetras "Más de $300.000"))
-                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf))
+                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?CostoLaptop 0))
                 )
         )
+
         (return ?CostoEnLetras)
 )
 
@@ -57,14 +74,16 @@
         (printout t "   1 - 10hs o menos " crlf)
         (printout t "   2 - Más de 10hs " crlf)
         (bind ?BateriaLaptop 0)
-        (while (and (neq ?BateriaLaptop 1) (neq ?BateriaLaptop 2))
+        
+        (while (= ?BateriaLaptop 0)
                 (bind ?BateriaLaptop (read))
                 (switch ?BateriaLaptop
                         (case 1 then (bind ?BateriaEnLetras "10hs o menos") )
                         (case 2 then (bind ?BateriaEnLetras "Más de 10hs") )
-                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf))
+                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?BateriaLaptop 0))
                 )
         )
+
         (return ?BateriaEnLetras)
 )
 
