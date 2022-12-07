@@ -2,7 +2,7 @@
     (and
         (Laptop (Uso "Juegos"))
         (Laptop (Tamanio "Mediano"))
-        (Laptop (Costo "Más de $300.000"))
+        (Laptop (Costo "Mas de $300.000"))
         (Laptop (Bateria "10hs o menos"))
     )
     =>
@@ -13,7 +13,7 @@
     (and
         (Laptop (Uso "Juegos"))
         (Laptop (Tamanio "Grande"))
-        (Laptop (Costo "Más de $300.000"))
+        (Laptop (Costo "Mas de $300.000"))
         (Laptop (Bateria "10hs o menos"))
     )
     =>
@@ -35,8 +35,8 @@
     (and
         (Laptop (Uso "Juegos"))
         (Laptop (Tamanio "Grande"))
-        (Laptop (Costo "Más de $300.000"))
-        (Laptop (Bateria "Más de 10hs"))
+        (Laptop (Costo "Mas de $300.000"))
+        (Laptop (Bateria "Mas de 10hs"))
     )
     =>
     (printout t "La laptop sugerida es: ASUS ROG Zephyrus Advantage Edition 14" crlf)
