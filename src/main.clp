@@ -129,8 +129,14 @@
                 ;Elección de costo
                 (bind ?CostoEnLetras (menu_elegir_rango_costo " "))
 
+                ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Grande" y el costo "Más de 300.000", no existen laptops para más de 10 horas.
+                (if ( and (eq ?UsoEnLetras "Crear/Diseñar") (eq ?TamanioEnLetras "Grande") (eq ?CostoEnLetras "Más de $300.000") ) then 
+                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras)))
+                        (bind ?Termina 1)
+                )
+
                 ;Si el uso NO es "Trabajo/Escuela" se puede elegir rango de duración de batería
-                (if (not (eq ?UsoEnLetras "Trabajo/Escuela") ) then 
+                (if (and (not (eq ?UsoEnLetras "Trabajo/Escuela")) (= ?Termina 0) ) then 
                         ;Elección de bateria
                         (bind ?BateriaEnLetras (menu_elegir_rango_tamanio_bateria " "))
 

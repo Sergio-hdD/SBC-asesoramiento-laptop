@@ -36,7 +36,7 @@
         (Laptop (Uso "Crear/Diseñar"))
         (Laptop (Tamanio "Grande"))
         (Laptop (Costo "Más de $300.000"))
-        (Laptop (Bateria "10hs o menos"))
+        ;(Laptop (Bateria "10hs o menos"))
     )
     =>
     (printout t "La laptop sugerida es: Dell XPS 17 9700" crlf)
