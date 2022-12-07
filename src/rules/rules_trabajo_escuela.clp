@@ -3,7 +3,7 @@
 (defrule Microsoft_Surface_Laptop_Go_2_ ""
     (Laptop 
         (Uso "Trabajo/Escuela")
-        (Tamanio "Pequeño")
+        (Tamanio "Pequenio")
     )
     =>
     (printout t "La laptop sugerida es: Microsoft Surface Laptop Go 2" crlf)
@@ -29,7 +29,7 @@
     (Laptop 
             (Uso "Trabajo/Escuela")
             (Tamanio "Mediano")
-            (Costo "Más de $300.000")
+            (Costo "Mas de $300.000")
     )
     =>
     (printout t "La laptop sugerida es: Microsoft Surface Laptop 5 (15 inch)" crlf)
@@ -51,7 +51,7 @@
     (Laptop 
         (Uso "Trabajo/Escuela")
         (Tamanio "Grande")
-        (Costo "Más de $300.000")
+        (Costo "Mas de $300.000")
     )
     =>
     (printout t "La laptop sugerida es: LG Gram 16" crlf)
