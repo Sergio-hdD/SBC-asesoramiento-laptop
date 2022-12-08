@@ -1,12 +1,12 @@
 ;Todas las notebooks para Trabajo/Escuela tienen más de 10 horas de bateria por lo que no es posible elegir duración de la bateria
 
-(defrule Microsoft_Surface_Laptop_Go_2_ ""
+(defrule Acer_Chromebook_Spin_311 ""
     (Laptop 
         (Uso "Trabajo/Escuela")
         (Tamanio "Pequenio")
     )
     =>
-    (printout t "La laptop sugerida es: Microsoft Surface Laptop Go 2" crlf)
+    (printout t "La laptop sugerida es: Acer Chromebook Spin 311" crlf)
 )
 
 
@@ -36,14 +36,14 @@
 )
 
 
-(defrule Lenovo_IdealPad_Flex_5_15_inch ""
+(defrule ASUS_Chromebook_CX1 ""
     (Laptop 
         (Uso "Trabajo/Escuela")
         (Tamanio "Grande")
         (Costo "$300.000 o menos")
     )
     =>
-    (printout t "La laptop sugerida es: Lenovo IdealPad Flex 5 (15 inch)" crlf)
+    (printout t "La laptop sugerida es: ASUS Chromebook CX1" crlf)
 )
 
 
