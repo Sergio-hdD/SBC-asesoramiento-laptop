@@ -30,21 +30,14 @@
         (while (= ?TamanioLaptop 0)
                 (bind ?TamanioLaptop (read))
 
-                (if (not (eq ?UsoEnLetras "Juegos") ) then
-                        (switch ?TamanioLaptop
-                                (case 1 then (bind ?TamanioEnLetras "Pequenio"))
-                                (case 2 then (bind ?TamanioEnLetras "Mediano"))
-                                (case 3 then (bind ?TamanioEnLetras "Grande"))
-                                (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?TamanioLaptop 0))
+                (switch ?TamanioLaptop
+                        (case 1 then 
+                                (bind ?TamanioEnLetras "Pequenio") 
+                                (if (eq ?UsoEnLetras "Juegos") then (bind ?TamanioLaptop 0) (printout t "Opcion incorrecta, elija de nuevo" crlf) )
                         )
-                )
-
-                (if (eq ?UsoEnLetras "Juegos") then
-                        (switch ?TamanioLaptop
-                                (case 2 then (bind ?TamanioEnLetras "Mediano"))
-                                (case 3 then (bind ?TamanioEnLetras "Grande"))
-                                (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?TamanioLaptop 0))
-                        )
+                        (case 2 then (bind ?TamanioEnLetras "Mediano"))
+                        (case 3 then (bind ?TamanioEnLetras "Grande"))
+                        (default (printout t "Opcion incorrecta, elija de nuevo" crlf) (bind ?TamanioLaptop 0))
                 )
         )
 
