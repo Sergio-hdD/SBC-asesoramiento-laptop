@@ -3,6 +3,7 @@
 (load "C:/Users/Franco/Downloads/Sistemas basados en conocimientos/SBC-asesoramiento-laptop/src/main.clp")
 (load "C:/Users/Franco/Downloads/Sistemas basados en conocimientos/SBC-asesoramiento-laptop/src/rules/rules_basico.clp")
 (load "C:/Users/Franco/Downloads/Sistemas basados en conocimientos/SBC-asesoramiento-laptop/src/rules/rules_juegos.clp")
+(load "C:/Users/Franco/Downloads/Sistemas basados en conocimientos/SBC-asesoramiento-laptop/src/rules/rules_trabajo_escuela.clp")
 (load "C:/Users/Franco/Downloads/Sistemas basados en conocimientos/SBC-asesoramiento-laptop/src/response.clp")
 (reset)
 (run)
