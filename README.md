@@ -40,5 +40,6 @@ Este archivo (setup.bat) contiene las siguientes instrucciones:
 - (reset) ; Para cargar la memoria de trabajo.
 - (run) ; Para ejecutar
 
+***
 [Documentación](https://docs.google.com/document/d/1salLly__NzNh4SbwSWxWRxZ81uWjR5LNUd699QztlKU/edit?usp=sharing)
 
