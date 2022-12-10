@@ -81,7 +81,7 @@
 )
 
 (deffunction mostrar_opciones_seleccionadas (?UsoEnLetras ?TamanioEnLetras ?CostoEnLetras ?BateriaEnLetras)
-        (printout t "   Sus elecciones fueron " crlf)
+        (printout t ">>> Sus elecciones fueron " crlf)
         (printout t "           Ha elegido uso:") (printout t ?UsoEnLetras crlf)
         (printout t "           Ha elegido tamanio:") (printout t ?TamanioEnLetras crlf)
         (if (not (eq ?CostoEnLetras " "))  then 
@@ -111,7 +111,7 @@
                         (or (eq ?UsoEnLetras "Basico") (and (eq ?UsoEnLetras "Trabajo/Escuela") (eq ?TamanioEnLetras "Pequenio") ) )
                         (and (eq ?UsoEnLetras "Crear/Diseniar") (or (eq ?TamanioEnLetras "Pequenio") (eq ?TamanioEnLetras "Mediano") ) )
                 ) then 
-                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
+                (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras))
                 (bind ?Termina 1)
         )
 
@@ -122,7 +122,7 @@
 
                 ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Grande" y el costo "Más de 300.000", no existen laptops para más de 10 horas.
                 (if ( and (eq ?UsoEnLetras "Crear/Diseniar") (eq ?TamanioEnLetras "Grande") (eq ?CostoEnLetras "Mas de $300.000") ) then 
-                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras)))
+                        (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras) (EleccionCosto ?CostoEnLetras))
                         (bind ?Termina 1)
                 )
 
@@ -131,12 +131,12 @@
                         ;Elección de bateria
                         (bind ?BateriaEnLetras (menu_elegir_rango_tamanio_bateria " "))
 
-                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) (Bateria ?BateriaEnLetras) ))
+                        (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras) (EleccionCosto ?CostoEnLetras) (EleccionBateria ?BateriaEnLetras))
                 )
 
                 ;Si el uso es "Trabajo/Escuela"
-                (if (eq ?UsoEnLetras "Trabajo/Escuela") then 
-                        (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras) (Costo ?CostoEnLetras) ))
+                (if (eq ?UsoEnLetras "Trabajo/Escuela") then
+                        (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras) (EleccionCosto ?CostoEnLetras))
                 )
         )
 
