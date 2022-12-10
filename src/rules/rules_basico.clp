@@ -1,28 +1,43 @@
 ;Todas las notebooks para Básico no es posible elegir costo ni la duración de la bateria 
 
 (defrule Lenovo_IdealPad_Duet_3i_ ""
-    (Laptop 
-            (Uso "Basico") 
-            (Tamanio "Pequenio")
-    )
+    (EleccionUso "Basico") 
+    (EleccionTamanio "Pequenio")
     =>
-    (printout t "La laptop sugerida es: Lenovo IdealPad Duet 3i" crlf)
+    (assert (Laptop 
+                (Marca_modelo "Lenovo IdealPad Duet 3i")  
+                (Uso "Basico") 
+                (Tamanio "10,3") 
+                (Costo "46.500")
+                (Bateria " ")
+            )
+    )
 )
 
 (defrule ASUS_VivoBook_13_Slate_ ""
-    (Laptop 
-            (Uso "Basico") 
-            (Tamanio "Mediano")
-    )
+    (EleccionUso "Basico") 
+    (EleccionTamanio "Mediano")
     =>
-    (printout t "La laptop sugerida es: ASUS VivoBook 13 Slate" crlf)
+    (assert (Laptop 
+                (Marca_modelo "ASUS VivoBook 13 Slate")
+                (Uso "Basico")
+                (Tamanio "13,3")
+                (Costo "93.000")
+                (Bateria " ")
+            )
+    )
 )
 
 (defrule Lenovo_IdealPad_Flex_5_15_inch_ ""
-    (Laptop 
-            (Uso "Basico")
-            (Tamanio "Grande")
-    )
+    (EleccionUso "Basico")
+    (EleccionTamanio "Grande")
     =>
-    (printout t "La laptop sugerida es: Lenovo IdealPad Flex 5 (15 inch)" crlf)
+    (assert (Laptop
+                (Marca_modelo "Lenovo IdealPad Flex 5 (15 inch)")
+                (Uso "Basico")
+                (Tamanio "15,6")
+                (Costo "173.290")
+                (Bateria " ")
+            )
+    )
 )
