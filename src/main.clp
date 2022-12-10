@@ -105,14 +105,12 @@
         ;Elección de tamaño de pantalla
         (bind ?TamanioEnLetras (menu_elegir_tamanio ?UsoEnLetras))
 
-        ;Si el uso es "Básico", o si el uso es "TrabajoEscuela" y tamaño "Pequeño", solo tendrá 2 elecciones
-        (if ( or (eq ?UsoEnLetras "Basico") (and (eq ?UsoEnLetras "Trabajo/Escuela") (eq ?TamanioEnLetras "Pequenio") ) ) then 
-                (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
-                (bind ?Termina 1)
-        )
-
-        ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Pequeño" o "Mediano", solo existe un modelo de laptop para cada tamaño.
-        (if ( and (eq ?UsoEnLetras "Crear/Diseniar") (or (eq ?TamanioEnLetras "Pequenio") (eq ?TamanioEnLetras "Mediano") ) ) then 
+        ;Si el uso es "Básico", o si el uso es "TrabajoEscuela" y tamaño "Pequeño",  o  Si el uso es 
+        ;"Crear/Diseñar" y el tamaño de la pantalla es "Pequeño" o "Mediano", solo tendrá 2 elecciones (uso y tamanio)
+        (if     ( or
+                        (or (eq ?UsoEnLetras "Basico") (and (eq ?UsoEnLetras "Trabajo/Escuela") (eq ?TamanioEnLetras "Pequenio") ) )
+                        (and (eq ?UsoEnLetras "Crear/Diseniar") (or (eq ?TamanioEnLetras "Pequenio") (eq ?TamanioEnLetras "Mediano") ) )
+                ) then 
                 (assert (Laptop (Uso ?UsoEnLetras) (Tamanio ?TamanioEnLetras)))
                 (bind ?Termina 1)
         )
