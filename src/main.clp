@@ -121,7 +121,7 @@
                 (bind ?CostoEnLetras (menu_elegir_rango_costo " "))
 
                 ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Grande" y el costo "Más de 300.000", no existen laptops para más de 10 horas.
-                (if ( and (eq ?UsoEnLetras "Crear/Diseniar") (eq ?TamanioEnLetras "Grande") (eq ?CostoEnLetras "Mas de $300.000") ) then 
+                (if ( and (eq ?UsoEnLetras "Crear/Diseniar") (eq ?TamanioEnLetras "Grande") (or (eq ?CostoEnLetras "Mas de $300.000") (eq ?CostoEnLetras "$300.000 o menos") ) ) then 
                         (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras) (EleccionCosto ?CostoEnLetras))
                         (bind ?Termina 1)
                 )

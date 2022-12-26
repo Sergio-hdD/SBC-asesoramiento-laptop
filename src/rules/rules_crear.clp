@@ -31,7 +31,6 @@
     (EleccionUso "Crear/Diseniar")
     (EleccionTamanio "Grande")
     (EleccionCosto "$300.000 o menos")
-    (EleccionBateria "10hs o menos")
     =>
     (assert (Laptop 
                 (Marca_modelo "HP ENVY x360 15")  
@@ -46,7 +45,7 @@
 (defrule Dell_XPS_17_9700 ""
     (EleccionUso "Crear/Diseniar")
     (EleccionTamanio "Grande")
-    (EleccionCosto "Más de $300.000")
+    (EleccionCosto "Mas de $300.000")
     =>
     (assert (Laptop 
                 (Marca_modelo "Dell XPS 17 9700")  
@@ -63,7 +62,6 @@
     (EleccionUso "Crear/Diseniar")
     (EleccionTamanio "Grande")
     (EleccionCosto "$300.000 o menos")
-    (EleccionBateria "10hs o menos")
     =>
     (assert (Laptop 
                 (Marca_modelo "Dell Inspiron 7506 2 in 1")  
