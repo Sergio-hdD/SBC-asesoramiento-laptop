@@ -3,8 +3,6 @@
 (defrule ASUS_ROG_Flow_Z13 ""
     (EleccionUso "Juegos") 
     (EleccionTamanio "Mediano") 
-    (EleccionCosto "Mas de $300.000") 
-    (EleccionBateria "10hs o menos")
     =>
     (assert (Laptop 
                 (Marca_modelo "ASUS ROG Flow Z13")  
@@ -36,7 +34,6 @@
     (EleccionUso "Juegos") 
     (EleccionTamanio "Grande") 
     (EleccionCosto "$300.000 o menos") 
-    (EleccionBateria "10hs o menos")
     =>
     (assert (Laptop 
                 (Marca_modelo "HP Victus Gaming 15")  

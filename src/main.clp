@@ -106,10 +106,12 @@
         (bind ?TamanioEnLetras (menu_elegir_tamanio ?UsoEnLetras))
 
         ;Si el uso es "Básico", o si el uso es "TrabajoEscuela" y tamaño "Pequeño",  o  Si el uso es 
-        ;"Crear/Diseñar" y el tamaño de la pantalla es "Pequeño" o "Mediano", solo tendrá 2 elecciones (uso y tamanio)
+        ;"Crear/Diseñar" y el tamaño de la pantalla es "Pequeño" o "Mediano", o 
+        ;Si el uso es "Juegos" y el tamaño de la pantalla es "Mediano", solo tendrá 2 elecciones (uso y tamanio)
         (if     ( or
                         (or (eq ?UsoEnLetras "Basico") (and (eq ?UsoEnLetras "Trabajo/Escuela") (eq ?TamanioEnLetras "Pequenio") ) )
                         (and (eq ?UsoEnLetras "Crear/Diseniar") (or (eq ?TamanioEnLetras "Pequenio") (eq ?TamanioEnLetras "Mediano") ) )
+                        (and (eq ?UsoEnLetras "Juegos") (eq ?TamanioEnLetras "Mediano") )
                 ) then 
                 (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras))
                 (bind ?Termina 1)
@@ -120,8 +122,12 @@
                 ;Elección de costo
                 (bind ?CostoEnLetras (menu_elegir_rango_costo " "))
 
-                ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Grande" y el costo "Más de 300.000", no existen laptops para más de 10 horas.
-                (if ( and (eq ?UsoEnLetras "Crear/Diseniar") (eq ?TamanioEnLetras "Grande") (or (eq ?CostoEnLetras "Mas de $300.000") (eq ?CostoEnLetras "$300.000 o menos") ) ) then 
+                ;Si el uso es "Crear/Diseñar" y el tamaño de la pantalla es "Grande" y el costo "Más de 300.000", no existen laptops para más de 10 horas o
+                ;Si el uso es "Juegos" y el tamaño de la pantalla es "Grande" y el costo "$300.000 o menos", no existen laptops para más de 10 horas.
+                (if     (or 
+                                ( and (eq ?UsoEnLetras "Crear/Diseniar") (eq ?TamanioEnLetras "Grande") (or (eq ?CostoEnLetras "Mas de $300.000") (eq ?CostoEnLetras "$300.000 o menos") ) ) 
+                                ( and (eq ?UsoEnLetras "Juegos") (eq ?TamanioEnLetras "Grande") (eq ?CostoEnLetras "$300.000 o menos") )
+                        ) then 
                         (assert (EleccionUso ?UsoEnLetras) (EleccionTamanio ?TamanioEnLetras) (EleccionCosto ?CostoEnLetras))
                         (bind ?Termina 1)
                 )
